@@ -1,4 +1,4 @@
-package br.org.coletivoJava.integracoes.restJenkins.api;
+package br.org.coletivoJava.integracoes.restIntjenkins.api;
 
 import javax.inject.Qualifier;
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
@@ -12,7 +12,7 @@ import java.lang.annotation.ElementType;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface InfoIntegracaoRestJenkinsJobs {
+public @interface InfoIntegracaoRestIntjenkinsJobs {
 
 	FabIntRestJenkinsJobs tipo();
 }
