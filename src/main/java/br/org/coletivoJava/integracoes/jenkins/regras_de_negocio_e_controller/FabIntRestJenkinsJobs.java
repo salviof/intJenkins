@@ -30,8 +30,7 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             parametrosGet = "team_id",
             urlDocumentacao = "https://ci.jenkins.io/api/",
             adicionarAutenticacaoBearer
-            = true
-    )
+            = true)
     CRIAR,
     @InfoConsumoRestService(getPachServico = "/api/v2/team/{0}/space",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
@@ -39,8 +38,7 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             parametrosGet = "team_id",
             urlDocumentacao = "https://ci.jenkins.io/api/",
             adicionarAutenticacaoBearer
-            = true
-    )
+            = true)
     COPIAR,
     @InfoConsumoRestService(getPachServico = "/api/v2/team/{0}/space",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
@@ -48,7 +46,6 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             parametrosGet = "team_id",
             urlDocumentacao = "https://ci.jenkins.io/api/",
             adicionarAutenticacaoBearer
-            = true
-    )
+            = true)
     EXECUTAR,
 }
