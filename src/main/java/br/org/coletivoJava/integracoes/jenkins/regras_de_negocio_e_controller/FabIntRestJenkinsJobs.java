@@ -42,4 +42,13 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             = true
     )
     COPIAR,
+    @InfoConsumoRestService(getPachServico = "/api/v2/team/{0}/space",
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = "team_id",
+            urlDocumentacao = "https://ci.jenkins.io/api/",
+            adicionarAutenticacaoBearer
+            = true
+    )
+    EXECUTAR,
 }

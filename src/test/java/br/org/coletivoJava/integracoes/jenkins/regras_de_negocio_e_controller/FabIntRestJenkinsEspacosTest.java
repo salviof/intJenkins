@@ -4,15 +4,10 @@
  */
 package br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller;
 
-import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoreJenkinsTestes;
+import com.super_bits.Super_Bits.jenkins.configAppp.ConfiguradorCoreJenkinsTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import testes.testesSupers.TestesApiRest;
 
 /**
