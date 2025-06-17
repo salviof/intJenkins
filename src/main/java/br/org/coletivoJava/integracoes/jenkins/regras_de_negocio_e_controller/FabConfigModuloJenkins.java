@@ -18,9 +18,18 @@ public enum FabConfigModuloJenkins implements ItfFabConfigModulo {
     URL_SERVIDOR_JENKINS,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
     TOKEN_ACESSO_DIRETO;
+    public static final String NOME_INTEGRACAO = "intJenkins";
 
     public String getValorPadrao() {
-        return "Configure o arquivo de propriedades na pasta resources do seu projeto";
+        switch (this) {
+            case URL_SERVIDOR_JENKINS:
+                break;
+            case TOKEN_ACESSO_DIRETO:
+                break;
+            default:
+                throw new AssertionError(this.name());
+        }
+        return "não definido";
     }
 
 }
