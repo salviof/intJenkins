@@ -6,12 +6,15 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.Ac
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 
-@InfoIntegracaoRestJenkinsJobs(tipo = FabIntRestJenkinsJobs.EXECUTAR)
-public class IntegracaoRestJenkinsExecutar extends AcaoApiIntegracaoAbstrato {
+@InfoIntegracaoRestJenkinsJobs(tipo = FabIntRestJenkinsJobs.EXECUTAR_BUILD)
+public class IntegracaoRestJenkinsExecutarBuild
+		extends
+			AcaoApiIntegracaoAbstrato {
 
-	public IntegracaoRestJenkinsExecutar(
+	public IntegracaoRestJenkinsExecutarBuild(
 			final FabTipoAgenteClienteApi pTipoAgente,
 			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabIntRestJenkinsJobs.EXECUTAR, pTipoAgente, pUsuario, pParametro);
+		super(FabIntRestJenkinsJobs.EXECUTAR_BUILD, pTipoAgente, pUsuario,
+				pParametro);
 	}
 }
