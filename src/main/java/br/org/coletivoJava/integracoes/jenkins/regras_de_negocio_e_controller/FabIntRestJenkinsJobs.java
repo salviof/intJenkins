@@ -47,5 +47,5 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             urlDocumentacao = "https://ci.jenkins.io/api/",
             adicionarAutenticacaoBearer
             = true)
-    EXECUTAR,
+    EXECUTAR_BUILD,
 }
