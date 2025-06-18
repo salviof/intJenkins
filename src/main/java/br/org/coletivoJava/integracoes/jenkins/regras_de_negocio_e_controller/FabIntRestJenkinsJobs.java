@@ -13,8 +13,6 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegis
 
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTipoArquivoImportacao;
 
-import static br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins.NOME_INTEGRACAO;
-
 /**
  * @author SalvioF
  */
@@ -45,5 +43,5 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             parametrosGet = "jobName",
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
             adicionarAutenticacaoBearer = true)
-    EXECUTAR,
+    EXECUTAR_BUILD,
 }
