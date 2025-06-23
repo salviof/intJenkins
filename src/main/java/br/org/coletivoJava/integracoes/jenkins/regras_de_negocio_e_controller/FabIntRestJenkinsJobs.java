@@ -13,6 +13,8 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegis
 
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTipoArquivoImportacao;
 
+import static br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins.NOME_INTEGRACAO;
+
 /**
  * @author SalvioF
  */
@@ -23,24 +25,23 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTip
 )
 public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
 
-    @InfoConsumoRestService(getPachServico = "/createItem?name={name}",
+    @InfoConsumoRestService(getPachServico = "/createItem?name={0}",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.POST,
-            parametrosPost = {"name"},
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
-            adicionarAutenticacaoBearer = true)
+            adicionarAutenticacaoBearer = true
+
+    )
     CRIAR,
-    @InfoConsumoRestService(getPachServico = "/createItem?name={nameJobCopy}&mode=copy&from={nameJobBase}",
+    @InfoConsumoRestService(getPachServico = "/createItem?name={0}&mode=copy&from={1}",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.POST,
-            parametrosGet = {"nameJobCopy", "nameJobBase"},
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
             adicionarAutenticacaoBearer = true)
     COPIAR,
-    @InfoConsumoRestService(getPachServico = "/job/{jobName}/build",
+    @InfoConsumoRestService(getPachServico = "/job/{0}/build",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.GET,
-            parametrosGet = "jobName",
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
             adicionarAutenticacaoBearer = true)
     EXECUTAR_BUILD,

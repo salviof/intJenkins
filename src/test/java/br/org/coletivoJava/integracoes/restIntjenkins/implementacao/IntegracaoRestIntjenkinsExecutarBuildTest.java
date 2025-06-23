@@ -1,23 +1,20 @@
 package br.org.coletivoJava.integracoes.restIntjenkins.implementacao;
 
-import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins;
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
 import com.super_bits.Super_Bits.jenkins.configAppp.ConfiguradorCoreJenkinsTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class IntegracaoRestIntjenkinsCopiarTest {
+public class IntegracaoRestIntjenkinsExecutarBuildTest {
 
     @Test
-    public void testeIntegracaoCopiar() {
+    public void testeIntegracaoExecutarBuild() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        String nomeProjeto = "testeDaApi";
-        String nomeProjetoCopiado = "teste";
-        ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.COPIAR.getAcao(nomeProjeto, nomeProjetoCopiado).getResposta();
+        String nomeProjeto = "projetoTeste";
+        ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.EXECUTAR_BUILD.getAcao(nomeProjeto).getResposta();
         assertTrue(resposta.isSucesso());
     }
 
