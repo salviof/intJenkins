@@ -28,21 +28,19 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
     @InfoConsumoRestService(getPachServico = "/createItem?name={0}",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.POST,
-            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
-            adicionarAutenticacaoBearer = true
-
+            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/"
     )
     CRIAR,
     @InfoConsumoRestService(getPachServico = "/createItem?name={0}&mode=copy&from={1}",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.POST,
-            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
-            adicionarAutenticacaoBearer = true)
+            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/"
+    )
     COPIAR,
     @InfoConsumoRestService(getPachServico = "/job/{0}/build",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            tipoConexao = FabTipoConexaoRest.GET,
-            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/",
-            adicionarAutenticacaoBearer = true)
+            tipoConexao = FabTipoConexaoRest.POST,
+            urlDocumentacao = "https://projetos.casanovadigital.com.br/api/"
+    )
     EXECUTAR_BUILD,
 }
