@@ -17,24 +17,6 @@ public class IntegracaoRestIntjenkinsCopiar extends AcaoApiIntegracaoAbstrato {
     }
 
     @Override
-    public FabTipoConexaoRest gerarTipoRequisicao() {
-        return super.gerarTipoRequisicao();
-    }
-
-    @Override
-    public String gerarUrlRequisicao() {
-        String url;
-        if (getParametros().length > 0 && getParametros()[0] != null && getParametros()[1] != null) {
-            url = super.gerarUrlRequisicao();
-        } else {
-            url = getUrlServidor() + infoRest.getPachServico();
-            url = url.replace("?name={0}&mode=copy&from={1}", "");
-        }
-        System.out.println("Url: " + url);
-        return url;
-    }
-
-    @Override
     public String gerarCorpoRequisicao() {
         return "";
     }

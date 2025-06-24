@@ -13,7 +13,7 @@ public class IntegracaoRestIntjenkinsExecutarBuildTest {
     @Test
     public void testeIntegracaoExecutarBuild() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        String nomeProjeto = "projetoTeste";
+        String nomeProjeto = "teste";
         ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.EXECUTAR_BUILD.getAcao(nomeProjeto).getResposta();
         assertTrue(resposta.isSucesso());
     }
