@@ -13,9 +13,13 @@ public class IntegracaoRestIntjenkinsCopiarTest {
     @Test
     public void testeIntegracaoCopiar() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        String nomeProjeto = "clienteCopy";
-        String nomeProjetoCopiado = "testeDaApi";
+
+        ItfRespostaWebServiceSimples tokenCrumb = FabIntRestJenkinsJobs.CRUMB_ACESSO.getAcao().getResposta();
+//        System.out.println("Token: " + tokenCrumb);
+        String nomeProjeto = "funcionaaa";
+        String nomeProjetoCopiado = "teste";
         ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.COPIAR.getAcao(nomeProjeto, nomeProjetoCopiado).getResposta();
+        System.out.println("Resposta " + resposta);
         assertTrue(resposta.isSucesso());
     }
 
