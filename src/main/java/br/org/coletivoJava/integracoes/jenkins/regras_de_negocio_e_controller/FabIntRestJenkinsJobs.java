@@ -43,4 +43,9 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/"
     )
     EXECUTAR_BUILD,
+    @InfoConsumoRestService(getPachServico = "/crumbIssuer/api/json",
+            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET
+    )
+    CRUMB_ACESSO
 }
