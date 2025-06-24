@@ -23,7 +23,7 @@ public class FabIntRestJenkinsEspacosTest extends TestesApiRest {
     public void testValues() {
         try {
             SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-//            gerarCodigosChamadasEndpoint(FabIntRestJenkinsJobs.class);
+            gerarCodigosChamadasEndpoint(FabIntRestJenkinsJobs.class);
             System.out.println("modulo: "+SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPatchArquivoConfig());
         } catch (Throwable t) {
             Assert.fail("Deu merda");
