@@ -6,17 +6,15 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.Ac
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 
-@InfoIntegracaoRestIntjenkinsJobs(tipo = FabIntRestJenkinsJobs.CRIAR)
-public class IntegracaoRestIntjenkinsCriar extends AcaoApiIntegracaoAbstrato {
+@InfoIntegracaoRestIntjenkinsJobs(tipo = FabIntRestJenkinsJobs.CRUMB_ACESSO)
+public class IntegracaoRestIntjenkinsCrumbAcesso
+        extends
+        AcaoApiIntegracaoAbstrato {
 
-    public IntegracaoRestIntjenkinsCriar(
+    public IntegracaoRestIntjenkinsCrumbAcesso(
             final FabTipoAgenteClienteApi pTipoAgente,
             final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-        super(FabIntRestJenkinsJobs.CRIAR, pTipoAgente, pUsuario, pParametro);
+        super(FabIntRestJenkinsJobs.CRUMB_ACESSO, pTipoAgente, pUsuario, pParametro);
     }
 
-    @Override
-    public String gerarCorpoRequisicao() {
-        return "";
-    }
 }

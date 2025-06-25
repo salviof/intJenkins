@@ -8,13 +8,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class IntegracaoRestIntjenkinsCriarTest {
+public class IntegracaoRestIntjenkinsExecutarBuildTest {
 
     @Test
-    public void testeIntegracaoCriar() {
+    public void testeIntegracaoExecutarBuild() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        String nomeProjeto = "projetoTeste";
-        ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.CRIAR.getAcao(nomeProjeto).getResposta();
+        String nomeProjeto = "teste";
+        ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.EXECUTAR_BUILD.getAcao(nomeProjeto).getResposta();
         assertTrue(resposta.isSucesso());
     }
+
 }

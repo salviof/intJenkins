@@ -1,10 +1,12 @@
 package br.org.coletivoJava.integracoes.restIntjenkins.implementacao;
 
-import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins;
+import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
 import com.super_bits.Super_Bits.jenkins.configAppp.ConfiguradorCoreJenkinsTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import junit.framework.TestCase;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class IntegracaoRestIntjenkinsCopiarTest {
 
@@ -12,6 +14,13 @@ public class IntegracaoRestIntjenkinsCopiarTest {
     public void testeIntegracaoCopiar() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
 
+        ItfRespostaWebServiceSimples tokenCrumb = FabIntRestJenkinsJobs.CRUMB_ACESSO.getAcao().getResposta();
+//        System.out.println("Token: " + tokenCrumb);
+        String nomeProjeto = "funcionaaa";
+        String nomeProjetoCopiado = "teste";
+        ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.COPIAR.getAcao(nomeProjeto, nomeProjetoCopiado).getResposta();
+        System.out.println("Resposta " + resposta);
+        assertTrue(resposta.isSucesso());
     }
 
 }
