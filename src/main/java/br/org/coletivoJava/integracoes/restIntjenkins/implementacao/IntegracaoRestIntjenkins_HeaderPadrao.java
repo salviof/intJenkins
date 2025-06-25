@@ -29,5 +29,7 @@ public class IntegracaoRestIntjenkins_HeaderPadrao
 
         System.out.println("encoded: " + encoded);
         cabecalho.put("Authorization", "Basic " + encoded);
+        String crumb = acao.getTokenGestao().getToken();
+        cabecalho.put("jenkinscrumb", token);
     }
 }
