@@ -14,9 +14,7 @@ public class IntegracaoRestIntjenkinsCopiarTest {
     public void testeIntegracaoCopiar() {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
 
-        ItfRespostaWebServiceSimples tokenCrumb = FabIntRestJenkinsJobs.CRUMB_ACESSO.getAcao().getResposta();
-//        System.out.println("Token: " + tokenCrumb);
-        String nomeProjeto = "funcionaaa";
+        String nomeProjeto = "ttt";
         String nomeProjetoCopiado = "teste";
         ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.COPIAR.getAcao(nomeProjeto, nomeProjetoCopiado).getResposta();
         System.out.println("Resposta " + resposta);
