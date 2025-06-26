@@ -19,10 +19,9 @@ public class IntegracaoRestIntjenkins_HeaderPadrao
     @Override
     public void gerarHeaderPadrao() {
         super.gerarHeaderPadrao();
-        String usuario = "admin";
 
         String token = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.TOKEN_ACESSO_DIRETO);
-
+        String usuario = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.USUARIO_ADMIN);
         String credenciais = usuario + ":" + token;
 
         String encoded = Base64.getEncoder().encodeToString(credenciais.getBytes(StandardCharsets.UTF_8));
