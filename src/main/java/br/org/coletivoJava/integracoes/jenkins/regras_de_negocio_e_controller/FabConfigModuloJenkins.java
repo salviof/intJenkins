@@ -17,14 +17,17 @@ public enum FabConfigModuloJenkins implements ItfFabConfigModulo {
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.URL_SERVIDOR_API)
     URL_SERVIDOR_JENKINS,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
-    TOKEN_ACESSO_DIRETO;
+    TOKEN_ACESSO_DIRETO,
+    @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
+    USUARIO_ADMIN;
+
     public static final String NOME_INTEGRACAO = "intJenkins";
 
     public String getValorPadrao() {
         switch (this) {
             case URL_SERVIDOR_JENKINS:
-                break;
             case TOKEN_ACESSO_DIRETO:
+            case USUARIO_ADMIN:
                 break;
             default:
                 throw new AssertionError(this.name());
