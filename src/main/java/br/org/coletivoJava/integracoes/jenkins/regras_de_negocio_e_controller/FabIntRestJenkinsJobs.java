@@ -10,7 +10,6 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebSer
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.InfoConsumoRestService;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.FabTipoAutenticacaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.InfoConfigRestClientIntegracao;
-
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.importacao.FabTipoArquivoImportacao;
 
 import static br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins.NOME_INTEGRACAO;
@@ -43,9 +42,4 @@ public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
             urlDocumentacao = "https://projetos.casanovadigital.com.br/api/"
     )
     EXECUTAR_BUILD,
-    @InfoConsumoRestService(getPachServico = "/crumbIssuer/api/json",
-            tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            tipoConexao = FabTipoConexaoRest.GET
-    )
-    CRUMB_ACESSO
 }

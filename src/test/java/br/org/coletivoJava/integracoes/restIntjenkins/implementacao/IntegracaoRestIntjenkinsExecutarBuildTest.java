@@ -16,6 +16,6 @@ public class IntegracaoRestIntjenkinsExecutarBuildTest {
         String nomeProjeto = "teste";
         ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.EXECUTAR_BUILD.getAcao(nomeProjeto).getResposta();
         assertTrue(resposta.isSucesso());
-    }
+     }
 
 }
