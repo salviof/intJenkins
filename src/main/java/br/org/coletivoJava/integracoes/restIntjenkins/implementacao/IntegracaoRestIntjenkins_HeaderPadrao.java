@@ -7,6 +7,8 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.transmissao_
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 public class IntegracaoRestIntjenkins_HeaderPadrao
         extends
@@ -30,5 +32,12 @@ public class IntegracaoRestIntjenkins_HeaderPadrao
         cabecalho.put("Authorization", "Basic " + encoded);
         String crumb = acao.getTokenGestao().getToken();
         cabecalho.put("jenkinscrumb", crumb);
+    }
+
+    @Override
+    public Map<String, String> getHeaderPadrao() {
+        Map<String, String> headerPadrao = new HashMap<>();
+        headerPadrao.put("SEGREDO", SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.CHAVE_ACESSO_SERVIDOR));
+        return headerPadrao;
     }
 }

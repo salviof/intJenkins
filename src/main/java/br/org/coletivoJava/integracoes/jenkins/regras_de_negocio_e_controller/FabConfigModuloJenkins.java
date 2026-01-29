@@ -18,6 +18,8 @@ public enum FabConfigModuloJenkins implements ItfFabConfigModulo {
     URL_SERVIDOR_JENKINS,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
     TOKEN_ACESSO_DIRETO,
+    @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.CHAVE_PRIVADA)
+    CHAVE_ACESSO_SERVIDOR,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.SENHA)
     USUARIO_ADMIN;
 
@@ -25,6 +27,7 @@ public enum FabConfigModuloJenkins implements ItfFabConfigModulo {
 
     public String getValorPadrao() {
         switch (this) {
+            case CHAVE_ACESSO_SERVIDOR:
             case URL_SERVIDOR_JENKINS:
             case TOKEN_ACESSO_DIRETO:
             case USUARIO_ADMIN:

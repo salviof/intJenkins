@@ -4,8 +4,8 @@ import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.Fa
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
 import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntjenkinsJobs;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
@@ -14,7 +14,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenD
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.ChamadaHttpSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenDinamico;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoUsuario;
 import jakarta.json.JsonObject;
 
 import java.nio.charset.StandardCharsets;
@@ -51,7 +51,7 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
     }
 
     public GestaoTokenRestIntjenkins(final FabTipoAgenteClienteApi pTipoAgente,
-                                     final ItfUsuario pUsuario) {
+                                     final ComoUsuario pUsuario) {
         super(FabIntRestJenkinsJobs.class, pTipoAgente, pUsuario);
     }
 
@@ -74,8 +74,8 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
 
         RespostaWebServiceSimples resposta = UtilSBApiRestClient.getRespostaRest(chamada);
         JsonObject respJson = resposta.getRespostaComoObjetoJson();
-        armazenarRespostaToken(UtilSBCoreJson.getTextoByJsonObjeect(respJson));
-        setToken(new TokenDeAcessoExternoDinamico(respJson.getString("crumb"), UtilSBCoreDataHora.incrementaDias(new Date(), 360)));
+        armazenarRespostaToken(UtilCRCJson.getTextoByJsonObjeect(respJson));
+        setToken(new TokenDeAcessoExternoDinamico(respJson.getString("crumb"), UtilCRCDataHora.incrementaDias(new Date(), 360)));
 
         return getTokenCompleto();
     }
@@ -85,6 +85,6 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
         // interpretar o json para obter o token e a data de validade.
         System.out.println("Token do getToken(): " + getToken());
         System.out.println("token vindo do final: " + chaveObterCRUMB);
-        return new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilSBCoreDataHora.incrementaDias(new Date(), 360));
+        return new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilCRCDataHora.incrementaDias(new Date(), 360));
     }
 }

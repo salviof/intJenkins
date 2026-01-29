@@ -5,7 +5,7 @@
  */
 package br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller;
 
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.InfoConsumoRestService;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.FabTipoAutenticacaoRest;
@@ -22,7 +22,7 @@ import static br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_contro
         nomeIntegracao = NOME_INTEGRACAO,
         tipoAutenticacao = FabTipoAutenticacaoRest.CHAVE_ACESSO_METODOLOGIA_PROPRIA
 )
-public enum FabIntRestJenkinsJobs implements ItfFabricaIntegracaoRest {
+public enum FabIntRestJenkinsJobs implements ComoFabricaIntegracaoRest {
 
     @InfoConsumoRestService(getPachServico = "/createItem?name={0}",
             tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
