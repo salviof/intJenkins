@@ -1,28 +1,39 @@
 package br.org.coletivoJava.integracoes.restIntjenkins.implementacao;
 
-import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntjenkinsJobs;
-import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins;
+import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
+import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntjenkinsJobs;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
+<<<<<<< HEAD
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCClienteRest;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
+=======
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
+>>>>>>> 0d5ce635c2d98e96318aade010db66a1533166da
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoDinamico;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenDeAcessoExterno;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenDeAcessoExterno;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoDinamico;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.ChamadaHttpSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenDinamico;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoUsuario;
 import jakarta.json.JsonObject;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @InfoIntegracaoRestIntjenkinsJobs(tipo = FabIntRestJenkinsJobs.CRIAR)
 public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
 
     private final String chaveObterCRUMB = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.TOKEN_ACESSO_DIRETO);
+    private final String urlServidor = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.URL_SERVIDOR_JENKINS);
 
     @Override
     public boolean validarToken() {
@@ -34,18 +45,23 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
 
         //faz uma chamado usando o token registrado no sistema.
         String token = getToken();
-        // ou getTokenCompleto().getToken();
-
+        if(getToken() != null) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public ItfTokenDeAcessoExterno loadTokenArmazenado() {
-        return null;
+        return getTokenCompleto();
     }
 
     public GestaoTokenRestIntjenkins(final FabTipoAgenteClienteApi pTipoAgente,
+<<<<<<< HEAD
             final ComoUsuario pUsuario) {
+=======
+                                     final ComoUsuario pUsuario) {
+>>>>>>> 0d5ce635c2d98e96318aade010db66a1533166da
         super(FabIntRestJenkinsJobs.class, pTipoAgente, pUsuario);
     }
 
@@ -54,15 +70,26 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
         // Fazer a requisição para obter o CRUMB
 
         String respostaObtendoCRUMB = null;
-        ///crumbIssuer/api/json;
         ChamadaHttpSimples chamada = new ChamadaHttpSimples();
-        String urlServidor = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.URL_SERVIDOR_JENKINS);
-        chamada.setPath("crumbIssuer/api/json");
-        ///
+
+        Map<String, String> cabecalho = new HashMap<>();
+        String credenciais = SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.USUARIO_ADMIN) + ":" + SBCore.getConfigModulo(FabConfigModuloJenkins.class).getPropriedade(FabConfigModuloJenkins.TOKEN_ACESSO_DIRETO);
+        String encoded = Base64.getEncoder().encodeToString(credenciais.getBytes(StandardCharsets.UTF_8));
+
+        cabecalho.put("Authorization", "Basic " + encoded);
+        chamada.setPath("/crumbIssuer/api/json");
+        chamada.setEnderecoHost(urlServidor);
+        chamada.setTipoConexao(FabTipoConexaoRest.GET);
+        chamada.setCabecalhos(cabecalho);
+
         RespostaWebServiceSimples resposta = UtilSBApiRestClient.getRespostaRest(chamada);
         JsonObject respJson = resposta.getRespostaComoObjetoJson();
         armazenarRespostaToken(UtilCRCJson.getTextoByJsonObjeect(respJson));
+<<<<<<< HEAD
         setToken(new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilCRCDataHora.incrementaDias(new Date(), 360)));
+=======
+        setToken(new TokenDeAcessoExternoDinamico(respJson.getString("crumb"), UtilCRCDataHora.incrementaDias(new Date(), 360)));
+>>>>>>> 0d5ce635c2d98e96318aade010db66a1533166da
 
         return getTokenCompleto();
     }
@@ -70,6 +97,11 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
     @Override
     public ItfTokenDeAcessoExterno extrairToken(JsonObject pJson) {
         // interpretar o json para obter o token e a data de validade.
+<<<<<<< HEAD
+=======
+        System.out.println("Token do getToken(): " + getToken());
+        System.out.println("token vindo do final: " + chaveObterCRUMB);
+>>>>>>> 0d5ce635c2d98e96318aade010db66a1533166da
         return new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilCRCDataHora.incrementaDias(new Date(), 360));
     }
 }

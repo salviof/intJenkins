@@ -1,9 +1,12 @@
 package br.org.coletivoJava.integracoes.restIntjenkins.implementacao;
 
-import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntjenkinsJobs;
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
+import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntjenkinsJobs;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
+<<<<<<< HEAD
+=======
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
+>>>>>>> 0d5ce635c2d98e96318aade010db66a1533166da
 import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoUsuario;
 
 @InfoIntegracaoRestIntjenkinsJobs(tipo = FabIntRestJenkinsJobs.EXECUTAR_BUILD)
