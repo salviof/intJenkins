@@ -15,6 +15,7 @@ public class IntegracaoRestIntjenkinsExecutarBuildTest {
         SBCore.configurar(new ConfiguradorCoreJenkinsTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         String nomeProjeto = "teste";
         ItfRespostaWebServiceSimples resposta = FabIntRestJenkinsJobs.EXECUTAR_BUILD.getAcao(nomeProjeto).getResposta();
+
         assertTrue(resposta.isSucesso());
     }
 

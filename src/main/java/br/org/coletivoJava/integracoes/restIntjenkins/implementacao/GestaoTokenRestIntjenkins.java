@@ -4,9 +4,9 @@ import br.org.coletivoJava.integracoes.restIntjenkins.api.InfoIntegracaoRestIntj
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabIntRestJenkinsJobs;
 import br.org.coletivoJava.integracoes.jenkins.regras_de_negocio_e_controller.FabConfigModuloJenkins;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreClienteRest;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCClienteRest;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoDinamico;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenDeAcessoExterno;
@@ -14,7 +14,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgent
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.ChamadaHttpSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenDinamico;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoUsuario;
 import jakarta.json.JsonObject;
 
 import java.util.Date;
@@ -45,7 +45,7 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
     }
 
     public GestaoTokenRestIntjenkins(final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario) {
+            final ComoUsuario pUsuario) {
         super(FabIntRestJenkinsJobs.class, pTipoAgente, pUsuario);
     }
 
@@ -61,8 +61,8 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
         ///
         RespostaWebServiceSimples resposta = UtilSBApiRestClient.getRespostaRest(chamada);
         JsonObject respJson = resposta.getRespostaComoObjetoJson();
-        armazenarRespostaToken(UtilSBCoreJson.getTextoByJsonObjeect(respJson));
-        setToken(new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilSBCoreDataHora.incrementaDias(new Date(), 360)));
+        armazenarRespostaToken(UtilCRCJson.getTextoByJsonObjeect(respJson));
+        setToken(new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilCRCDataHora.incrementaDias(new Date(), 360)));
 
         return getTokenCompleto();
     }
@@ -70,6 +70,6 @@ public class GestaoTokenRestIntjenkins extends GestaoTokenDinamico {
     @Override
     public ItfTokenDeAcessoExterno extrairToken(JsonObject pJson) {
         // interpretar o json para obter o token e a data de validade.
-        return new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilSBCoreDataHora.incrementaDias(new Date(), 360));
+        return new TokenDeAcessoExternoDinamico(chaveObterCRUMB, UtilCRCDataHora.incrementaDias(new Date(), 360));
     }
 }
